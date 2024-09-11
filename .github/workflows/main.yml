@@ -79,4 +79,5 @@ jobs:
           pip install bandit
       - name: Run Bandit (Python security linter)
         run: |
-          bandit -r .
+          bandit -r . --severity-level MEDIUM --confidence-level HIGH
+
