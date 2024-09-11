@@ -64,20 +64,21 @@ jobs:
           pytest test.py
 
   # Security Auditing with Bandit
-  security:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.12'
-      - name: Install Bandit
-        run: |
-          pip install bandit
-      - name: Run Bandit (Python security linter)
-        run: |
-          bandit -r . --severity-level MEDIUM --confidence-level HIGH
+security:
+  runs-on: ubuntu-latest
+  needs: test
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.12'
+    - name: Install Bandit
+      run: |
+        pip install bandit
+    - name: Run Bandit (Python security linter)
+      run: |
+        bandit -r . --severity-level medium --confidence-level high
+
 
